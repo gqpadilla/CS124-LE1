@@ -589,5 +589,102 @@ window.COURSE = [
     ]
   }
   ]
+},
+{
+  id: "L5", title: "Evaluating PLs", sub: "Criteria table, simplicity, uniformity, orthogonality, abstraction, reliability, efficiency",
+  sections: [
+  {
+    id: "5.1", title: "What Makes a Great PL", slides: ["L5", 1, 4],
+    notes: [
+      "There is <b>no standard set of criteria</b> for a great programming language. The list is a <b>suggested</b> one, not a hardlined one.",
+      "Criteria are chosen around the need for a PL that produces <b>readable, writable and reliable</b> code. The set comes from <b>R.A. Finkel</b>'s and <b>R.W. Sebesta</b>'s lists.",
+      "<b>Criteria table</b>: Readability ← simplicity, orthogonality, data types, syntax design. Writability ← all four of those + support for abstraction + expressivity. Reliability ← all of the above + type checking, exception handling, restricted aliasing.",
+      "<b>Addenda</b>: <b>uniformity</b> (under writability and readability) and <b>efficiency</b> (under reliability)."
+    ],
+    quiz: [
+      { q: "Is there a standard set of criteria for a great programming language?", c: ["No, the list is suggested rather than hardlined", "Yes, defined by ISO", "Yes, defined by Sebesta alone", "Only for compiled languages"], x: "Slide 2: there is no standard set of criteria." },
+      { q: "Whose lists is the set of criteria taken from?", c: ["R.A. Finkel and R.W. Sebesta", "Dijkstra and Hoare", "Backus and Naur", "Stroustrup and Wirth"], x: "Slide 2." },
+      { q: "Which characteristic affects ONLY reliability in the criteria table?", c: ["Type checking", "Simplicity", "Expressivity", "Syntax design"], x: "Type checking, exception handling and restricted aliasing are reliability only.", fig: "L5-03" },
+      { q: "Support for abstraction and expressivity affect which criteria?", c: ["Writability and reliability", "Readability only", "Readability and writability only", "Reliability only"], x: "They have no dot under readability.", fig: "L5-03" },
+      { q: "Which characteristics affect all three criteria?", c: ["Simplicity, orthogonality, data types, syntax design", "Type checking and exception handling", "Abstraction and expressivity", "Restricted aliasing only"], x: "The first four rows have dots in every column.", fig: "L5-03" },
+      { q: "In the addenda, efficiency is placed under…", c: ["reliability", "readability", "writability", "cost"], x: "Slide 4: uniformity under writability and readability; efficiency under reliability." },
+      { q: "In the addenda, uniformity is placed under…", c: ["writability and readability", "reliability only", "efficiency", "cost"], x: "Slide 4." }
+    ]
+  },
+  {
+    id: "5.2", title: "Simplicity, Uniformity, Orthogonality", slides: ["L5", 5, 7],
+    notes: [
+      "<b>Simplicity</b>: as few basic concepts as possible. Factors: <b>number of basic constructs</b>, <b>feature multiplicity</b> (many ways to do the same thing), <b>operator overloading</b>.",
+      "<b>Uniformity</b>: basic concepts applied <b>consistently and universally</b>. Counterexample <b>Pascal</b>: constants can't be declared with values given by expressions, though expressions work everywhere else a value is needed; some <code>for</code> loops take a single statement as body while <code>repeat</code> loops take any number.",
+      "<b>Orthogonality</b>: independent functions controlled by independent mechanisms; also, a relatively small set of primitive constructs can be combined to build control and data structures. Closely related to simplicity. The more orthogonal the design, the <b>fewer exceptions</b> the rules require."
+    ],
+    quiz: [
+      { q: "Which is NOT listed as a factor affecting simplicity?", c: ["Exception handling", "Number of basic constructs", "Feature multiplicity", "Operator overloading"], x: "Slide 5 lists constructs, feature multiplicity and operator overloading." },
+      { q: "Simplicity means there should be…", c: ["as few basic concepts as possible", "as many features as possible", "one way to write every program", "no operators"], x: "Slide 5." },
+      { q: "“Basic concepts should be applied consistently and universally” defines…", c: ["Uniformity", "Orthogonality", "Expressivity", "Abstraction"], x: "Slide 6." },
+      { q: "Which language is the counterexample for uniformity?", c: ["Pascal", "Java", "LISP", "C#"], x: "Slide 6: Pascal constants and loop bodies." },
+      { q: "In Pascal, constants cannot be declared with values given by…", c: ["expressions", "integers", "characters", "literals"], x: "Even though expressions are accepted elsewhere a value is needed." },
+      { q: "“Independent functions should be controlled by independent mechanisms” defines…", c: ["Orthogonality", "Uniformity", "Simplicity", "Modularity"], x: "Slide 7." },
+      { q: "The more orthogonal a language design, the…", c: ["fewer exceptions the language rules require", "more exceptions the rules require", "slower it executes", "harder it is to read"], x: "Slide 7." },
+      { q: "Orthogonality is closely related to…", c: ["simplicity", "aliasing", "efficiency", "exception handling"], x: "Slide 7." }
+    ]
+  },
+  {
+    id: "5.3", title: "Data Types and Syntax Design", slides: ["L5", 8, 9],
+    notes: [
+      "<b>Data types</b>: adequate facilities for defining data types and structures significantly aid <b>readability</b>. Example: an explicit <b>Boolean</b> type. Possible issue: the <b>orthogonality</b> of the PL.",
+      "<b>Syntax design</b>: closely tied to <b>clarity</b>. Mechanisms should be well defined and the outcome of code easily predictable. Factors: <b>special words</b>, <b>form</b>, <b>meaning</b>."
+    ],
+    quiz: [
+      { q: "Which example is given for data types aiding readability?", c: ["Explicitly having a Boolean data type", "Pointer arithmetic", "Implicit coercion", "goto statements"], x: "Slide 8." },
+      { q: "A possible issue with adding data types is the PL's…", c: ["orthogonality", "efficiency", "cost", "portability"], x: "Slide 8." },
+      { q: "Syntax design is closely tied to the concept of…", c: ["clarity", "efficiency", "aliasing", "recursion"], x: "Slide 9." },
+      { q: "Which is NOT a factor in syntax design?", c: ["Garbage collection", "Special words", "Form", "Meaning"], x: "Slide 9: special words, form and meaning." }
+    ]
+  },
+  {
+    id: "5.4", title: "Abstraction and Expressivity", slides: ["L5", 10, 11],
+    notes: [
+      "<b>Abstraction</b>: a way to <b>factor out recurring patterns</b>, letting you define and then use complicated structures or operations while ignoring many details. Related: <b>information hiding</b>, <b>modularity</b>.",
+      "<b>Expressivity</b>: relatively <b>convenient rather than cumbersome</b> ways of specifying computations. Examples: <b>short-circuit operators</b> and the <b>case</b> statement."
+    ],
+    quiz: [
+      { q: "“A way to factor out recurring patterns” describes…", c: ["Abstraction", "Expressivity", "Orthogonality", "Aliasing"], x: "Slide 10." },
+      { q: "Which concepts are related to abstraction?", c: ["Information hiding and modularity", "Aliasing and coercion", "Short-circuiting and case", "Compilation and interpretation"], x: "Slide 10." },
+      { q: "Short-circuit operators and the case statement are examples of…", c: ["Expressivity", "Abstraction", "Uniformity", "Type checking"], x: "Slide 11." },
+      { q: "Expressivity means a language has ___ ways of specifying computations.", c: ["relatively convenient rather than cumbersome", "as few as possible", "only one", "hardware-specific"], x: "Slide 11." }
+    ]
+  },
+  {
+    id: "5.5", title: "Reliability Features and Efficiency", slides: ["L5", 12, 15],
+    notes: [
+      "<b>Type checking</b>: testing for type errors, at <b>compile time</b> or during execution. Compile-time checking is <b>cheaper</b>, so more desirable.",
+      "<b>Exception handling</b>: a program intercepts run-time errors, takes corrective measures, then <b>continues</b>. Examples: (most) OO languages. Bad examples: <b>Awk</b> and <b>SNOBOL</b> silently convert data types to apply operators.",
+      "<b>Restricted aliasing</b>: aliasing = two or more distinct names accessing the <b>same memory cell</b>. Widely accepted as <b>dangerous</b>; some languages use it to overcome deficiencies in their data abstraction facilities.",
+      "<b>Efficiency</b>: of compiling and executing. Related: compiler optimization, handling recursion at compile time, interpreted vs compiled languages, levels of abstraction."
+    ],
+    quiz: [
+      { q: "Why is type checking at compile time more desirable?", c: ["It is cheaper", "It catches more logic errors", "It allows aliasing", "It is required by all languages"], x: "Slide 12." },
+      { q: "Intercepting run-time errors, taking corrective measures, then continuing is…", c: ["Exception handling", "Type checking", "Aliasing", "Compiler optimization"], x: "Slide 13." },
+      { q: "Which languages are given as bad examples for exception handling?", c: ["Awk and SNOBOL", "Java and C#", "Ada and C++", "FORTRAN and ALGOL"], x: "They silently convert data types to apply operators." },
+      { q: "Aliasing is having two or more distinct names that access…", c: ["the same memory cell", "different memory cells", "the same type", "the same scope"], x: "Slide 14." },
+      { q: "Some languages use aliasing to overcome deficiencies in their…", c: ["data abstraction facilities", "syntax", "compilers", "exception handling"], x: "Slide 14." },
+      { q: "Which is NOT listed as related to efficiency?", c: ["Operator overloading", "Compiler optimization", "Interpreted vs. compiled languages", "Levels of abstraction"], x: "Operator overloading is a simplicity factor." },
+      { q: "True or false: Aliasing is widely accepted as a dangerous feature.", c: ["True", "False"], x: "Slide 14." }
+    ]
+  },
+  {
+    id: "5.6", title: "Reporting Guidelines", slides: ["L5", 16, 16],
+    notes: [
+      "Report contents: <b>brief background</b> of the PL (history, facts, trivia); <b>sample code</b> for basic I/O, conditionals, iteration and recursion, and unique/special features; an <b>evaluation</b> of the PL based on this lecture.",
+      "Format: <b>5–10 minute</b> presentation plus <b>5 minutes</b> open discussion (plus points for relevant questions)."
+    ],
+    quiz: [
+      { q: "How long is the report presentation?", c: ["5–10 minutes, plus 5 minutes open discussion", "30 minutes", "1–2 minutes", "15 minutes, no discussion"], x: "Slide 16." },
+      { q: "Which is NOT required in the sample codes?", c: ["A GUI application", "Basic input and output", "Conditionals", "Iteration and recursion"], x: "Slide 16 lists I/O, conditionals, iteration/recursion and unique features." }
+    ]
+  }
+  ]
 }
+
 ];
